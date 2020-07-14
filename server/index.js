@@ -10,12 +10,14 @@ const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const PORT = 4000;
+const port = 4000;
 
 // connect to mongodb
-mongoose.connect(process.env.MONGODB_URI, () => {
-  console.log("connected to mongo db");
-});
+mongoose.connect(
+  process.env.MONGODB_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => { console.log("connected to mongo db"); }
+);
 
 app.use(cookieSession({
   name: "session",
